@@ -5,11 +5,13 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CitaResource\Pages;
 use App\Filament\Resources\CitaResource\RelationManagers;
 use App\Models\Cita;
+use App\Models\Paciente;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -59,18 +61,27 @@ class CitaResource extends Resource
             Tables\Columns\TextColumn::make('fisio.apellidos')
                 ->searchable()
                 ->sortable(),
-            Tables\Columns\TextColumn::make('paciente.name')
-                            ->searchable()
-                            ->sortable(),
+
+
+            Tables\Columns\TextColumn::make('paciente.apellidos')
+                /* ->getRelationship('Paciente', 'name') */
+                ->searchable()
+                ->sortable(),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('fisio_id')
-                ->relationship('fisio', 'apellidos'),
+                Tables\Filters\SelectFilter::make('fisio_id'),
+                /* ->getRelationship('Fisio', 'name'), */
                 Tables\Filters\SelectFilter::make('fecha'),
 
+            ])->headerActions([
+                 Tables\Actions\AttachAction::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+
+
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

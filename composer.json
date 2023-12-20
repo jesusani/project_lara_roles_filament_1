@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1",
         "althinect/filament-spatie-roles-permissions": "^2.2",
+        "awcodes/filament-curator": "^3.1",
         "filament/filament": "^3.0-stable",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
@@ -17,6 +18,8 @@
         "laravel/tinker": "^2.8",
         "pxlrbt/filament-spotlight": "^1.0",
         "pxlrbt/laravel-pdfable": "^0.1.2",
+        "shuvroroy/filament-spatie-laravel-health": "^2.0",
+        "soved/laravel-gdpr": "^1.7",
         "spatie/laravel-permission": "^6.1"
     },
     "require-dev": {
@@ -71,5 +74,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+          "type": "composer",
+          "url": "https://filament-media-library-pro.composer.sh"
+        }
+      ]
 }

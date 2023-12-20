@@ -50,11 +50,11 @@ class PacientePolicy
      */
     public function update(User $user, Paciente $paciente): bool
     {
-        return $user->id === $paciente->user_id;
+       // return $user->id === $paciente->user_id;
 
        // return auth()->user()->hasRole(['admin']);
         /*return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();*/
-        //return true;
+        return true;
     }
 
     /**

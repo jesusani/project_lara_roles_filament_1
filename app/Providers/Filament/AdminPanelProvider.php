@@ -18,6 +18,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use pxlrbt\FilamentSpotlight\SpotlightPlugin;
+use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 
 
 
@@ -61,6 +62,18 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 SpotlightPlugin::make(),
-            ]);
+
+            ])
+            ->plugin(FilamentSpatieLaravelHealthPlugin::make())
+            ->plugins([
+            \Awcodes\Curator\CuratorPlugin::make()
+                ->label('Media')
+                ->pluralLabel('Media')
+                ->navigationIcon('heroicon-o-photo')
+                ->navigationGroup('Content')
+                ->navigationSort(3)
+                ->navigationCountBadge()
+           //     ->resource(\App\Filament\Resources\CustomMediaResource::class)
+        ]);
     }
 }
